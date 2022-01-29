@@ -1,0 +1,23 @@
+{
+  "images" : [
+    {
+      "filename" : "dorsz_w_sosie_curry@1x.png",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "filename" : "dorsz_w_sosie_curry@2x.png",
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "dorsz_w_sosie_curry@3x.png",
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

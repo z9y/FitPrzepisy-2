@@ -1,0 +1,23 @@
+{
+  "images" : [
+    {
+      "filename" : "szaszlyki_z_kurczakiem_ananazsem_i_papryka@1x.png",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "filename" : "szaszlyki_z_kurczakiem_ananazsem_i_papryka@2x.png",
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "szaszlyki_z_kurczakiem_ananazsem_i_papryka@3x.png",
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

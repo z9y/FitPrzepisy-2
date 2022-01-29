@@ -1,0 +1,23 @@
+{
+  "images" : [
+    {
+      "filename" : "krewetki_z_warzywami_po_chinsku@1x.png",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "filename" : "krewetki_z_warzywami_po_chinsku@2x.png",
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "krewetki_z_warzywami_po_chinsku@3x.png",
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

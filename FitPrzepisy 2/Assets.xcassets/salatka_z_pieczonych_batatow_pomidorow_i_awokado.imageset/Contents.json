@@ -1,0 +1,23 @@
+{
+  "images" : [
+    {
+      "filename" : "salatka_z_pieczonych_batatow_pomidorow_i_awokado@1x.png",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "filename" : "salatka_z_pieczonych_batatow_pomidorow_i_awokado@2x.png",
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "salatka_z_pieczonych_batatow_pomidorow_i_awokado@3x.png",
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
