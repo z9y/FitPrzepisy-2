@@ -18,19 +18,19 @@ class ModelData: ObservableObject {
         }
     }
     
-//    var categories: [String: [Recipe]] {
-//        Dictionary (
-//            grouping: recipes,
-//            by: { $0.category.rawValue}
-//        )
-//    }
+    var categories: [String: [Recipe]] {
+        Dictionary (
+            grouping: recipes,
+            by: { $0.category.rawValue}
+        )
+    }
     
     var features: [Recipe] {
         recipes.filter { $0.isFeatured }
     }
     
     func loadData() async {
-        guard let url = URL(string: "https://udhasjkdhasjdash.free.beeceptor.com/fitprzepisy") else {
+        guard let url = URL(string: "https://z999y.free.beeceptor.com/fitprzepisy") else {
             print("Invalid URL")
             return
         }

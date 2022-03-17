@@ -11,33 +11,26 @@ struct ContentView: View {
     @EnvironmentObject var modelData: ModelData
     
     var body: some View {
-        VStack {
-            NavigationView {
-                ScrollView {
-                    if modelData.features.isEmpty {
-                        ProgressView()
-                            .foregroundColor(.cyan)
-                            .frame(height: 300)
-                    } else {
-                        Text("Nowości")
-                            .font(.title.bold())
-                        PageView(pages: modelData.features.map {
-                            FeatureCard(recipe: $0)
-                        })
-                            .aspectRatio(3 / 2, contentMode: .fit)
-                    }
-                    
-                    ForEach(modelData.recipes) { recipe in
-                        Text(recipe.name)
-                        
-                        Image(recipe.id)
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 200, height: 200)
-                    }
+        TabView {
+            HomeView()
+                .tabItem {
+                    Label("Nowość", systemImage: "safari")
                 }
-                .navigationTitle("FitPrzepisy")
-            }
+                
+            CategoryView()
+                .tabItem {
+                    Label("Kategorie", systemImage: "square.fill.text.grid.1x2")
+                }
+            
+            FavoritesView()
+                .tabItem {
+                    Label("Ulubione", systemImage: "heart")
+                }
+            
+            ShoppingListView()
+                .tabItem {
+                    Label("Lista zakupów", systemImage: "checklist")
+                }
         }
     }
 }
