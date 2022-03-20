@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		79126C7927E05633000F87EB /* CategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79126C7827E05633000F87EB /* CategoryView.swift */; };
+		79286D0627E663F7006D6A82 /* RowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79286D0527E663F7006D6A82 /* RowView.swift */; };
+		793C16D027E5C61300CBAFF0 /* NoItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793C16CF27E5C61300CBAFF0 /* NoItemView.swift */; };
+		793C16D227E5C69700CBAFF0 /* ItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793C16D127E5C69700CBAFF0 /* ItemModel.swift */; };
 		79713E7427DEFECA002A5A94 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79713E7327DEFECA002A5A94 /* HomeView.swift */; };
 		79713E7627DF0008002A5A94 /* ShoppingListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79713E7527DF0008002A5A94 /* ShoppingListView.swift */; };
 		79713E7827DF005E002A5A94 /* FavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79713E7727DF005E002A5A94 /* FavoritesView.swift */; };
@@ -30,6 +33,9 @@
 
 /* Begin PBXFileReference section */
 		79126C7827E05633000F87EB /* CategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryView.swift; sourceTree = "<group>"; };
+		79286D0527E663F7006D6A82 /* RowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RowView.swift; sourceTree = "<group>"; };
+		793C16CF27E5C61300CBAFF0 /* NoItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoItemView.swift; sourceTree = "<group>"; };
+		793C16D127E5C69700CBAFF0 /* ItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemModel.swift; sourceTree = "<group>"; };
 		79713E7327DEFECA002A5A94 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		79713E7527DF0008002A5A94 /* ShoppingListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListView.swift; sourceTree = "<group>"; };
 		79713E7727DF005E002A5A94 /* FavoritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesView.swift; sourceTree = "<group>"; };
@@ -62,6 +68,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		79286D0427E660CE006D6A82 /* Favorites */ = {
+			isa = PBXGroup;
+			children = (
+				79713E7727DF005E002A5A94 /* FavoritesView.swift */,
+			);
+			path = Favorites;
+			sourceTree = "<group>";
+		};
+		793C16CE27E5C59000CBAFF0 /* ShoppingList */ = {
+			isa = PBXGroup;
+			children = (
+				793C16D127E5C69700CBAFF0 /* ItemModel.swift */,
+				79286D0527E663F7006D6A82 /* RowView.swift */,
+				79713E7527DF0008002A5A94 /* ShoppingListView.swift */,
+				793C16CF27E5C61300CBAFF0 /* NoItemView.swift */,
+			);
+			path = ShoppingList;
+			sourceTree = "<group>";
+		};
 		79B9EDC727A5B38E009B9899 = {
 			isa = PBXGroup;
 			children = (
@@ -130,8 +155,8 @@
 		79F9C3A527E2F80800B0FA7E /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				79713E7727DF005E002A5A94 /* FavoritesView.swift */,
-				79713E7527DF0008002A5A94 /* ShoppingListView.swift */,
+				79286D0427E660CE006D6A82 /* Favorites */,
+				793C16CE27E5C59000CBAFF0 /* ShoppingList */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -217,9 +242,12 @@
 				79B9EDF527A5D0C9009B9899 /* PageControl.swift in Sources */,
 				79B9EDE427A5B53C009B9899 /* ModelData.swift in Sources */,
 				79C0F82C27A8EE9200D729D1 /* RecipeCard.swift in Sources */,
+				79286D0627E663F7006D6A82 /* RowView.swift in Sources */,
 				79713E7627DF0008002A5A94 /* ShoppingListView.swift in Sources */,
 				79B80F7027ACE2770025936D /* FitPrzepisy_2App.swift in Sources */,
+				793C16D227E5C69700CBAFF0 /* ItemModel.swift in Sources */,
 				79B64B6227AC65A2000C309F /* RecipeDetail.swift in Sources */,
+				793C16D027E5C61300CBAFF0 /* NoItemView.swift in Sources */,
 				79B9EDD627A5B38E009B9899 /* ContentView.swift in Sources */,
 				79B9EDF127A5CC12009B9899 /* FeatureCard.swift in Sources */,
 				79B9EDF327A5CD37009B9899 /* PageView.swift in Sources */,

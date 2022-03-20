@@ -12,6 +12,8 @@ struct RecipeGridView: View {
     let columns = [
         GridItem(.adaptive(minimum: 150), spacing: 10)
     ]
+    
+    //do wyrzucenia
     var recipesCountName: String {
         if recipes.count == 1 {
             return "przepis"

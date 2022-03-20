@@ -9,6 +9,8 @@ import SwiftUI
 
 struct RecipeDetail: View {
     @EnvironmentObject var modelData: ModelData
+    @State private var addToList = false
+    
     var recipe: Recipe
     
     var body: some View {
@@ -27,14 +29,11 @@ struct RecipeDetail: View {
                     //ADD DETAILS HERE
                     
                     Divider()
-                    
+
                     VStack(alignment: .leading, spacing: 30) {
                         Text("Składniki")
                             .font(.headline)
-                        
-//                        IngredientsList(recipe: recipe)
-//                            .frame(width: geo.size.width, height: geo.size.height)
-                        
+ 
                         ForEach(recipe.ingredients, id: \.self) { ingredient in
                             Text("• \(ingredient)")
                         }
@@ -52,10 +51,31 @@ struct RecipeDetail: View {
                     .padding(.horizontal)
                 }
             }
-    //        .navigationTitle("\(recipe.name)")
+            .alert("Dodać do listy zakupów?", isPresented: $addToList) {
+                Button("Dodaj") {
+                    addItem()
+                }
+                Button("Anuluj", role: .cancel) {}
+            }
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button {
+                        addToList = true
+                        //addItem()
+                    } label: {
+                        Image(systemName: "cart.badge.plus")
+                    }
+                }
+            }
             .ignoresSafeArea()
             .navigationViewStyle(.stack)
 //        }
+    }
+    
+    func addItem() {
+        _ = recipe.ingredients.map {
+            modelData.addItem(name: $0)
+        }
     }
 }
 

@@ -12,10 +12,20 @@ import Combine
 class ModelData: ObservableObject {
     @Published var recipes = [Recipe]()
     
+    @Published var items: [ItemModel] = [] {
+        didSet {
+            saveItem()
+        }
+    }
+    
+    let itemsKey: String = "itemsList"
+    let favoritesKey: String = "favoritesList"
+    
     init() {
         Task {
             await loadData()
         }
+        getItems()
     }
     
     var categories: [String: [Recipe]] {
@@ -43,6 +53,39 @@ class ModelData: ObservableObject {
             }
         } catch {
             print("Invalid data")
+        }
+    }
+    
+    func getItems() {
+        guard let data = UserDefaults.standard.data(forKey: itemsKey) else { return }
+        guard let savedItems = try? JSONDecoder().decode([ItemModel].self, from: data) else { return }
+        
+        self.items = savedItems
+    }
+    
+    func saveItem() {
+        if let encodedData = try? JSONEncoder().encode(items) {
+            UserDefaults.standard.set(encodedData, forKey: itemsKey)
+        }
+    }
+    
+    func addItem(name: String) {
+        let newItem = ItemModel(name: name, isBought: false)
+        items.append(newItem)
+    }
+    
+    func changeCompletion(item: ItemModel) {
+        if let index = items.firstIndex(where: { $0.id == item.id }) {
+            items[index] = item.changeCompletion()
+            
+            let element = items.remove(at: index)
+            
+            if item.isBought == false {
+//                let element = items.remove(at: index)
+                items.insert(element, at: items.count)
+            } else {
+                items.insert(element, at: 0)
+            }
         }
     }
 }
