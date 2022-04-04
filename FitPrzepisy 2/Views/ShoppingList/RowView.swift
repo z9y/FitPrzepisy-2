@@ -10,17 +10,19 @@ import SwiftUI
 struct RowView: View {
     @EnvironmentObject var modelData: ModelData
     
-    let item: ItemModel
+    let cos = ShoppingListView()
+    
+    let item: Item
     
     var body: some View {
         HStack {
             Button{
-                modelData.changeCompletion(item: item)
+                cos.changeBool(item: item)
             } label: {
                 Image(systemName: item.isBought ? "checkmark.circle" : "circle")
             }
             
-            Text(item.name)
+            Text(item.name ?? "Unknown")
                 .font(.callout)
                 .strikethrough(item.isBought ? true : false)
             
@@ -29,10 +31,11 @@ struct RowView: View {
         .padding()
         .cornerRadius(15)
     }
+
 }
 
-struct RowView_Previews: PreviewProvider {
-    static var previews: some View {
-        RowView(item: ItemModel(id: UUID(), name: "Test", isBought: true))
-    }
-}
+//struct RowView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        RowView()
+//    }
+//}

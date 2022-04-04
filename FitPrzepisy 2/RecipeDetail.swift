@@ -14,7 +14,6 @@ struct RecipeDetail: View {
     var recipe: Recipe
     
     var body: some View {
-//        GeometryReader { geo in
             ScrollView {
                 Image(decorative: recipe.id)
                     .resizable()
@@ -26,16 +25,29 @@ struct RecipeDetail: View {
                         .font(.largeTitle.bold())
                         .multilineTextAlignment(.center)
                     
-                    //ADD DETAILS HERE
+                    HStack(spacing: 10) {
+                        RecipeDetailView(recipe: recipe)
+                    }
+                    .padding(.vertical)
+                    .background(Color.primary.opacity(0.1))
+                    .dynamicTypeSize(...DynamicTypeSize.xxxLarge)
+                    
+                    HStack(spacing: 10) {
+                        NutritionView(recipe: recipe)
+                    }
+                    .padding(.vertical)
+                    .background(Color.primary.opacity(0.1))
+                    .dynamicTypeSize(...DynamicTypeSize.xxxLarge)
+                    
                     
                     Divider()
 
                     VStack(alignment: .leading, spacing: 30) {
                         Text("Składniki")
                             .font(.headline)
- 
+                        
                         ForEach(recipe.ingredients, id: \.self) { ingredient in
-                            Text("• \(ingredient)")
+                            IngredioentRowView(ingredients: ingredient)
                         }
                         
                         Divider()
@@ -49,34 +61,40 @@ struct RecipeDetail: View {
                         
                     }
                     .padding(.horizontal)
+                    .padding(.bottom)
                 }
             }
             .alert("Dodać do listy zakupów?", isPresented: $addToList) {
                 Button("Dodaj") {
-                    addItem()
+//                    addItem()
                 }
                 Button("Anuluj", role: .cancel) {}
             }
             .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
+                ToolbarItemGroup(placement: .navigationBarTrailing) {
                     Button {
                         addToList = true
-                        //addItem()
                     } label: {
                         Image(systemName: "cart.badge.plus")
+                            .foregroundColor(.primary)
+                    }
+                    Button {
+                        //dodaj do ulubionych
+                    } label: {
+                        Image(systemName: "heart.fill")
+                            .foregroundColor(.primary)
                     }
                 }
             }
-            .ignoresSafeArea()
+            .edgesIgnoringSafeArea(.top)
             .navigationViewStyle(.stack)
-//        }
     }
     
-    func addItem() {
-        _ = recipe.ingredients.map {
-            modelData.addItem(name: $0)
-        }
-    }
+//    func addItem() {
+//        _ = recipe.ingredients.map {
+//            modelData.addItem(name: $0)
+//        }
+//    }
 }
 
 struct RecipeDetail_Previews: PreviewProvider {

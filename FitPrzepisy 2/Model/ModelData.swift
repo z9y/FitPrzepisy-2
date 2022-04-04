@@ -5,16 +5,29 @@
 //  Created by Pawel Slusarz on 29/01/2022.
 //
 
+import CoreData
+//import Combine
 import Foundation
-import Combine
+import SwiftUI
 
 @MainActor
 class ModelData: ObservableObject {
     @Published var recipes = [Recipe]()
+//    @Environment(\.managedObjectContext) var moc
+//    @FetchRequest(sortDescriptors: [
+//        SortDescriptor(\.isBought),
+//        SortDescriptor(\.name)
+//    ]) var items: FetchedResults<Item>
     
-    @Published var items: [ItemModel] = [] {
+//    @Published var items: [ItemModel] = [] {
+//        didSet {
+//            saveItem()
+//        }
+//    }
+    
+    @Published var favorites: [Recipe] = [] {
         didSet {
-            saveItem()
+            saveFavorites()
         }
     }
     
@@ -25,7 +38,7 @@ class ModelData: ObservableObject {
         Task {
             await loadData()
         }
-        getItems()
+        getFavorites()
     }
     
     var categories: [String: [Recipe]] {
@@ -56,36 +69,57 @@ class ModelData: ObservableObject {
         }
     }
     
-    func getItems() {
-        guard let data = UserDefaults.standard.data(forKey: itemsKey) else { return }
-        guard let savedItems = try? JSONDecoder().decode([ItemModel].self, from: data) else { return }
+    //skasowac powtarzanie
+    func getFavorites() {
+        guard let data = UserDefaults.standard.data(forKey: favoritesKey) else { return }
+        guard let savedFavorites = try? JSONDecoder().decode([Recipe].self, from: data) else { return }
         
-        self.items = savedItems
+        self.favorites = savedFavorites
     }
     
-    func saveItem() {
-        if let encodedData = try? JSONEncoder().encode(items) {
-            UserDefaults.standard.set(encodedData, forKey: itemsKey)
+    func saveFavorites() {
+        if let encodedData = try? JSONEncoder().encode(favorites) {
+            UserDefaults.standard.set(encodedData, forKey: favoritesKey)
         }
     }
     
-    func addItem(name: String) {
-        let newItem = ItemModel(name: name, isBought: false)
-        items.append(newItem)
+    func addToFavorites(recipe: Recipe) {
+        let newFavorite = recipe
+        favorites.append(newFavorite)
     }
     
-    func changeCompletion(item: ItemModel) {
-        if let index = items.firstIndex(where: { $0.id == item.id }) {
-            items[index] = item.changeCompletion()
-            
-            let element = items.remove(at: index)
-            
-            if item.isBought == false {
-//                let element = items.remove(at: index)
-                items.insert(element, at: items.count)
-            } else {
-                items.insert(element, at: 0)
-            }
-        }
-    }
+//    func getItems() {
+//        guard let data = UserDefaults.standard.data(forKey: itemsKey) else { return }
+//        guard let savedItems = try? JSONDecoder().decode([ItemModel].self, from: data) else { return }
+//        
+//        self.items = savedItems
+//    }
+//    func changeCompletion(id: UUID, name: String, isBought: Bool) -> Item {
+//        return Item(context: moc)
+//    }
+//
+//    func saveItem() {
+//        if let encodedData = try? JSONEncoder().encode(items) {
+//            UserDefaults.standard.set(encodedData, forKey: itemsKey)
+//        }
+//    }
+//
+//    func addItem(name: String) {
+//        let newItem = ItemModel(name: name, isBought: false)
+//        items.append(newItem)
+//    }
+//
+//    func changeCompletion(item: Item) {
+//        if let index = items.firstIndex(where: { $0.id == item.id }) {
+//            items[index] = item.changeCompletion()
+//
+//            let element = items.remove(at: index)
+//
+//            if item.isBought == false {
+//                items.insert(element, at: items.count)
+//            } else {
+//                items.insert(element, at: 0)
+//            }
+//        }
+//    }
 }

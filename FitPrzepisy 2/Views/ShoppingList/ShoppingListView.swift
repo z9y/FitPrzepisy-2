@@ -8,21 +8,42 @@
 import SwiftUI
 
 struct ShoppingListView: View {
+    @Environment(\.managedObjectContext) var moc
+    @FetchRequest(sortDescriptors: [
+        SortDescriptor(\.isBought),
+        SortDescriptor(\.name)
+    ]) var items: FetchedResults<Item>
+    
     @EnvironmentObject var modelData: ModelData
     @State private var showingDelete = false
     
     var body: some View {
         NavigationView {
             VStack {
-                if modelData.items.isEmpty {
+                if items.isEmpty {
                     NoItemView()
                 } else {
-                    List(modelData.items) { item in
+                    List(items) { item in
                         RowView(item: item)
                     }
                 }
+                
+                Button("Add") {
+                    let name = ["pomarancza", "gruszka", "czekolada", "banan"]
+                    let last = ["70 gram", "50 gram", "30 ml", "100 gram"]
+                    
+                    let chosenName = name.randomElement()!
+                    let chosenLast = last.randomElement()!
+                    
+                    let item = Item(context: moc)
+                    item.id = UUID()
+                    item.name = "\(chosenName) \(chosenLast)"
+                    item.isBought = false
+                    
+                    try? moc.save()
+                }
             }
-            .navigationTitle("List zakupów")
+            .navigationTitle("Lista zakupów")
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
@@ -30,12 +51,12 @@ struct ShoppingListView: View {
                     } label: {
                         Image(systemName: "trash")
                     }
-                    .disabled(modelData.items.isEmpty)
+                    .disabled(items.isEmpty)
                 }
             }
             .alert("Usunąć wszystko z listy zakupów?", isPresented: $showingDelete) {
                 Button {
-                    modelData.items.removeAll()
+                    deleteItem()
                 } label: {
                     Text("Tak")
                 }
@@ -44,6 +65,20 @@ struct ShoppingListView: View {
             }
         }
         .navigationViewStyle(.stack)
+    }
+    
+    func deleteItem() {
+        for item in items {
+            moc.delete(item)
+        }
+        
+        try? moc.save()
+    }
+    
+    func changeBool(item: Item) {
+        item.isBought = !item.isBought
+        
+        try? moc.save()
     }
 }
 

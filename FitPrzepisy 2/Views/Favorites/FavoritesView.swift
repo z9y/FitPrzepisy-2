@@ -8,12 +8,15 @@
 import SwiftUI
 
 struct FavoritesView: View {
+    @EnvironmentObject var modelData: ModelData
+    
     var body: some View {
         NavigationView {
-            Text("Ulubione")
-                .navigationTitle("Ulubione")
+            ScrollView {
+                RecipeGridView(recipes: modelData.favorites)
+            }
+            .navigationTitle("Ulubione")
         }
-        .navigationViewStyle(.stack)
     }
 }
 

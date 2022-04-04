@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		79082FD527FA05D0002B5102 /* IngredioentRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79082FD427FA05D0002B5102 /* IngredioentRowView.swift */; };
+		79082FD727FA1776002B5102 /* NutritionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79082FD627FA1776002B5102 /* NutritionView.swift */; };
 		79126C7927E05633000F87EB /* CategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79126C7827E05633000F87EB /* CategoryView.swift */; };
 		79286D0627E663F7006D6A82 /* RowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79286D0527E663F7006D6A82 /* RowView.swift */; };
 		793C16D027E5C61300CBAFF0 /* NoItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793C16CF27E5C61300CBAFF0 /* NoItemView.swift */; };
@@ -28,10 +30,16 @@
 		79B9EDF527A5D0C9009B9899 /* PageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79B9EDF427A5D0C9009B9899 /* PageControl.swift */; };
 		79BC87EE27AA41FC005E783F /* CategoryRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79BC87ED27AA41FC005E783F /* CategoryRow.swift */; };
 		79C0F82C27A8EE9200D729D1 /* RecipeCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C0F82B27A8EE9200D729D1 /* RecipeCard.swift */; };
+		79F2724C27FA9DFF00EA244F /* Item.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 79F2724A27FA9DFF00EA244F /* Item.xcdatamodeld */; };
+		79F2724E27FA9E6000EA244F /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F2724D27FA9E6000EA244F /* DataController.swift */; };
+		79F4296127EADBC600377B0B /* VerticalAlignment-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F4296027EADBC600377B0B /* VerticalAlignment-Extension.swift */; };
 		79F9C3A427E2F31100B0FA7E /* RecipeGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F9C3A327E2F31100B0FA7E /* RecipeGridView.swift */; };
+		79FC370E27E98D9E0065830D /* RecipeDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79FC370D27E98D9E0065830D /* RecipeDetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		79082FD427FA05D0002B5102 /* IngredioentRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredioentRowView.swift; sourceTree = "<group>"; };
+		79082FD627FA1776002B5102 /* NutritionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutritionView.swift; sourceTree = "<group>"; };
 		79126C7827E05633000F87EB /* CategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryView.swift; sourceTree = "<group>"; };
 		79286D0527E663F7006D6A82 /* RowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RowView.swift; sourceTree = "<group>"; };
 		793C16CF27E5C61300CBAFF0 /* NoItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoItemView.swift; sourceTree = "<group>"; };
@@ -54,7 +62,11 @@
 		79B9EDF427A5D0C9009B9899 /* PageControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageControl.swift; sourceTree = "<group>"; };
 		79BC87ED27AA41FC005E783F /* CategoryRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryRow.swift; sourceTree = "<group>"; };
 		79C0F82B27A8EE9200D729D1 /* RecipeCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeCard.swift; sourceTree = "<group>"; };
+		79F2724B27FA9DFF00EA244F /* Item.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Item.xcdatamodel; sourceTree = "<group>"; };
+		79F2724D27FA9E6000EA244F /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
+		79F4296027EADBC600377B0B /* VerticalAlignment-Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VerticalAlignment-Extension.swift"; sourceTree = "<group>"; };
 		79F9C3A327E2F31100B0FA7E /* RecipeGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeGridView.swift; sourceTree = "<group>"; };
+		79FC370D27E98D9E0065830D /* RecipeDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,15 +121,17 @@
 				79B80F6D27ACE23C0025936D /* FitPrzepisy-2-Info.plist */,
 				79B80F6F27ACE2770025936D /* FitPrzepisy_2App.swift */,
 				79B9EDD527A5B38E009B9899 /* ContentView.swift */,
+				79F2724F27FA9EB800EA244F /* CoreData */,
+				79C0F82D27A8EEB400D729D1 /* Model */,
 				79F9C3A527E2F80800B0FA7E /* Views */,
 				79713E7327DEFECA002A5A94 /* HomeView.swift */,
 				79B64B6127AC65A2000C309F /* RecipeDetail.swift */,
+				79082FD427FA05D0002B5102 /* IngredioentRowView.swift */,
 				79126C7827E05633000F87EB /* CategoryView.swift */,
 				79BC87ED27AA41FC005E783F /* CategoryRow.swift */,
 				79C0F82B27A8EE9200D729D1 /* RecipeCard.swift */,
 				79F9C3A327E2F31100B0FA7E /* RecipeGridView.swift */,
 				79B9EDE527A5C09C009B9899 /* PageView */,
-				79C0F82D27A8EEB400D729D1 /* Model */,
 				79B9EDD727A5B391009B9899 /* Assets.xcassets */,
 				79B9EDD927A5B391009B9899 /* Preview Content */,
 			);
@@ -152,13 +166,33 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		79F2724F27FA9EB800EA244F /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				79F2724A27FA9DFF00EA244F /* Item.xcdatamodeld */,
+				79F2724D27FA9E6000EA244F /* DataController.swift */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
 		79F9C3A527E2F80800B0FA7E /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				79FC370C27E98D4F0065830D /* RecipeDetails */,
 				79286D0427E660CE006D6A82 /* Favorites */,
 				793C16CE27E5C59000CBAFF0 /* ShoppingList */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		79FC370C27E98D4F0065830D /* RecipeDetails */ = {
+			isa = PBXGroup;
+			children = (
+				79FC370D27E98D9E0065830D /* RecipeDetailView.swift */,
+				79082FD627FA1776002B5102 /* NutritionView.swift */,
+				79F4296027EADBC600377B0B /* VerticalAlignment-Extension.swift */,
+			);
+			path = RecipeDetails;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -242,14 +276,20 @@
 				79B9EDF527A5D0C9009B9899 /* PageControl.swift in Sources */,
 				79B9EDE427A5B53C009B9899 /* ModelData.swift in Sources */,
 				79C0F82C27A8EE9200D729D1 /* RecipeCard.swift in Sources */,
+				79F2724E27FA9E6000EA244F /* DataController.swift in Sources */,
 				79286D0627E663F7006D6A82 /* RowView.swift in Sources */,
+				79FC370E27E98D9E0065830D /* RecipeDetailView.swift in Sources */,
 				79713E7627DF0008002A5A94 /* ShoppingListView.swift in Sources */,
 				79B80F7027ACE2770025936D /* FitPrzepisy_2App.swift in Sources */,
 				793C16D227E5C69700CBAFF0 /* ItemModel.swift in Sources */,
 				79B64B6227AC65A2000C309F /* RecipeDetail.swift in Sources */,
+				79F2724C27FA9DFF00EA244F /* Item.xcdatamodeld in Sources */,
+				79F4296127EADBC600377B0B /* VerticalAlignment-Extension.swift in Sources */,
 				793C16D027E5C61300CBAFF0 /* NoItemView.swift in Sources */,
 				79B9EDD627A5B38E009B9899 /* ContentView.swift in Sources */,
+				79082FD727FA1776002B5102 /* NutritionView.swift in Sources */,
 				79B9EDF127A5CC12009B9899 /* FeatureCard.swift in Sources */,
+				79082FD527FA05D0002B5102 /* IngredioentRowView.swift in Sources */,
 				79B9EDF327A5CD37009B9899 /* PageView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -455,6 +495,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		79F2724A27FA9DFF00EA244F /* Item.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				79F2724B27FA9DFF00EA244F /* Item.xcdatamodel */,
+			);
+			currentVersion = 79F2724B27FA9DFF00EA244F /* Item.xcdatamodel */;
+			path = Item.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 79B9EDC827A5B38E009B9899 /* Project object */;
 }

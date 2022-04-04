@@ -30,7 +30,6 @@ struct HomeView: View {
                     }
                 }
                 .navigationTitle("Nowość")
-
             }
         }
         .navigationViewStyle(.stack)

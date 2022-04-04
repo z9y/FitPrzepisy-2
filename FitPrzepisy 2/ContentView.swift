@@ -11,26 +11,28 @@ struct ContentView: View {
     @EnvironmentObject var modelData: ModelData
     
     var body: some View {
-        TabView {
-            HomeView()
-                .tabItem {
-                    Label("Nowość", systemImage: "safari")
-                }
-                
-            CategoryView()
-                .tabItem {
-                    Label("Kategorie", systemImage: "square.fill.text.grid.1x2")
-                }
-            
-            FavoritesView()
-                .tabItem {
-                    Label("Ulubione", systemImage: "heart")
-                }
-            
-            ShoppingListView()
-                .tabItem {
-                    Label("Lista zakupów", systemImage: "checklist")
-                }
+        VStack {
+            TabView {
+                HomeView()
+                    .tabItem {
+                        Label("Nowość", systemImage: "safari")
+                    }
+
+                CategoryView()
+                    .tabItem {
+                        Label("Kategorie", systemImage: "square.fill.text.grid.1x2")
+                    }
+
+                FavoritesView()
+                    .tabItem {
+                        Label("Ulubione", systemImage: "heart")
+                    }
+
+                ShoppingListView()
+                    .tabItem {
+                        Label("Lista zakupów", systemImage: "checklist")
+                    }
+            }
         }
     }
 }

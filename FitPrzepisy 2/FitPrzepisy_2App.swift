@@ -10,11 +10,13 @@ import SwiftUI
 @main
 struct FitPrzepisy_2App: App {
     @StateObject private var modelData = ModelData()
+    @StateObject private var dataController = DataController()
     
     var body: some Scene {
         WindowGroup {
             ContentView()
                 .environmentObject(modelData)
+                .environment(\.managedObjectContext, dataController.container.viewContext)
         }
     }
 }

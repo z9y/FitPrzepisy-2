@@ -33,6 +33,7 @@ struct RecipeCard: View {
                 Button {
                     if favImage == "heart" {
                         favImage = "heart.fill"
+                        modelData.addToFavorites(recipe: recipe)
                     } else {
                         favImage = "heart"
                     }
