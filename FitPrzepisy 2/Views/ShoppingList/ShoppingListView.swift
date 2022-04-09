@@ -5,6 +5,7 @@
 //  Created by Pawel Slusarz on 14/03/2022.
 //
 
+import CoreData
 import SwiftUI
 
 struct ShoppingListView: View {

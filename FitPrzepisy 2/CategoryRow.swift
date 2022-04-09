@@ -27,7 +27,8 @@ struct CategoryRow: View {
                 LazyHStack(alignment: .top, spacing: 0) {
                     ForEach(recipes) { recipe in
                         NavigationLink(destination: RecipeDetail(recipe: recipe)) {
-                            RecipeCard(recipe: recipe)
+                            RecipeCard(recipe: recipe, width: 240, heigth: 300)
+                                .padding(.horizontal, 5)
                         }
                     }
                 }

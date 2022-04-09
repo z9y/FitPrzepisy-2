@@ -37,7 +37,7 @@ struct RecipeGridView: View {
             LazyVGrid(columns: columns, spacing: 15) {
                 ForEach(recipes) { recipe in
                     NavigationLink(destination: RecipeDetail(recipe: recipe)) {
-                        RecipeCard(recipe: recipe)
+                        RecipeCard(recipe: recipe, width: 170, heigth: 210)
                     }
                 }
             }

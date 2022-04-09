@@ -30,6 +30,8 @@
 		79B9EDF527A5D0C9009B9899 /* PageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79B9EDF427A5D0C9009B9899 /* PageControl.swift */; };
 		79BC87EE27AA41FC005E783F /* CategoryRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79BC87ED27AA41FC005E783F /* CategoryRow.swift */; };
 		79C0F82C27A8EE9200D729D1 /* RecipeCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C0F82B27A8EE9200D729D1 /* RecipeCard.swift */; };
+		79D2164D2801EBA70010B7EB /* RecipeCardHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79D2164C2801EBA70010B7EB /* RecipeCardHelper.swift */; };
+		79EA537527FE125300F7F328 /* StepperView in Frameworks */ = {isa = PBXBuildFile; productRef = 79EA537427FE125300F7F328 /* StepperView */; };
 		79F2724C27FA9DFF00EA244F /* Item.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 79F2724A27FA9DFF00EA244F /* Item.xcdatamodeld */; };
 		79F2724E27FA9E6000EA244F /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F2724D27FA9E6000EA244F /* DataController.swift */; };
 		79F4296127EADBC600377B0B /* VerticalAlignment-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F4296027EADBC600377B0B /* VerticalAlignment-Extension.swift */; };
@@ -62,6 +64,7 @@
 		79B9EDF427A5D0C9009B9899 /* PageControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageControl.swift; sourceTree = "<group>"; };
 		79BC87ED27AA41FC005E783F /* CategoryRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryRow.swift; sourceTree = "<group>"; };
 		79C0F82B27A8EE9200D729D1 /* RecipeCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeCard.swift; sourceTree = "<group>"; };
+		79D2164C2801EBA70010B7EB /* RecipeCardHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeCardHelper.swift; sourceTree = "<group>"; };
 		79F2724B27FA9DFF00EA244F /* Item.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Item.xcdatamodel; sourceTree = "<group>"; };
 		79F2724D27FA9E6000EA244F /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		79F4296027EADBC600377B0B /* VerticalAlignment-Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VerticalAlignment-Extension.swift"; sourceTree = "<group>"; };
@@ -74,6 +77,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				79EA537527FE125300F7F328 /* StepperView in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -125,6 +129,7 @@
 				79C0F82D27A8EEB400D729D1 /* Model */,
 				79F9C3A527E2F80800B0FA7E /* Views */,
 				79713E7327DEFECA002A5A94 /* HomeView.swift */,
+				79D2164C2801EBA70010B7EB /* RecipeCardHelper.swift */,
 				79B64B6127AC65A2000C309F /* RecipeDetail.swift */,
 				79082FD427FA05D0002B5102 /* IngredioentRowView.swift */,
 				79126C7827E05633000F87EB /* CategoryView.swift */,
@@ -211,6 +216,9 @@
 			dependencies = (
 			);
 			name = "FitPrzepisy 2";
+			packageProductDependencies = (
+				79EA537427FE125300F7F328 /* StepperView */,
+			);
 			productName = "FitPrzepisy 2";
 			productReference = 79B9EDD027A5B38E009B9899 /* FitPrzepisy 2.app */;
 			productType = "com.apple.product-type.application";
@@ -239,6 +247,9 @@
 				Base,
 			);
 			mainGroup = 79B9EDC727A5B38E009B9899;
+			packageReferences = (
+				79EA537327FE125300F7F328 /* XCRemoteSwiftPackageReference "StepperView" */,
+			);
 			productRefGroup = 79B9EDD127A5B38E009B9899 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -271,6 +282,7 @@
 				79B9EDEF27A5C8C5009B9899 /* PageViewController.swift in Sources */,
 				79F9C3A427E2F31100B0FA7E /* RecipeGridView.swift in Sources */,
 				79BC87EE27AA41FC005E783F /* CategoryRow.swift in Sources */,
+				79D2164D2801EBA70010B7EB /* RecipeCardHelper.swift in Sources */,
 				79713E7827DF005E002A5A94 /* FavoritesView.swift in Sources */,
 				79126C7927E05633000F87EB /* CategoryView.swift in Sources */,
 				79B9EDF527A5D0C9009B9899 /* PageControl.swift in Sources */,
@@ -495,6 +507,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		79EA537327FE125300F7F328 /* XCRemoteSwiftPackageReference "StepperView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/badrinathvm/StepperView.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		79EA537427FE125300F7F328 /* StepperView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 79EA537327FE125300F7F328 /* XCRemoteSwiftPackageReference "StepperView" */;
+			productName = StepperView;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		79F2724A27FA9DFF00EA244F /* Item.xcdatamodeld */ = {

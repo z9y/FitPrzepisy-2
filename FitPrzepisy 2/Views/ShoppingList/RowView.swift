@@ -25,6 +25,7 @@ struct RowView: View {
             Text(item.name ?? "Unknown")
                 .font(.callout)
                 .strikethrough(item.isBought ? true : false)
+                .lineLimit(nil)
             
             Spacer()
         }

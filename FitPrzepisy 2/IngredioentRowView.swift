@@ -32,11 +32,10 @@ struct IngredioentRowView: View {
             
             VStack(alignment: .trailing, spacing: 5) {
                 Text(amount)
-                    .font(.system(size: 15))
-                
+                    
                 Text(ingredients.unit)
-                    .font(.system(size: 15))
             }
+            .font(.system(size: 15))
         }
     }
 }

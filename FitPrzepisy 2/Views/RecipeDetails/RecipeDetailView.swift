@@ -13,11 +13,11 @@ struct RecipeDetailView: View {
     var level: String {
         switch recipe.details.level {
         case 1:
-            return "Łatwy"
+            return "Łatwy ✌️"
         case 2:
-            return "Średni"
+            return "Średni 👍"
         default:
-            return "Trudny"
+            return "Trudny 👊"
         }
     }
     
@@ -26,6 +26,7 @@ struct RecipeDetailView: View {
             VStack {
                 Text("Poziom")
                     .font(.caption.bold())
+                    .padding(.bottom, 5)
                 Text(level)
                     .font(.subheadline)
             }
@@ -33,6 +34,7 @@ struct RecipeDetailView: View {
             VStack {
                 Text("Przygotowanie")
                     .font(.caption.bold())
+                    .padding(.bottom, 5)
                 Text("\(recipe.details.preparationTime) min")
                     .font(.subheadline)
             }
@@ -40,16 +42,17 @@ struct RecipeDetailView: View {
             VStack {
                 Text("Czas całkowity")
                     .font(.caption.bold())
+                    .padding(.bottom, 5)
                 Text("\(recipe.details.totalTime) min")
                     .font(.subheadline)
             }
             
-            VStack {
-                Text("Porcje")
-                    .font(.caption.bold())
-                Text("\(recipe.details.servings)")
-                    .font(.subheadline)
-            }
+//            VStack {
+//                Text("Porcje")
+//                    .font(.caption.bold())
+//                Text("\(recipe.details.servings)")
+//                    .font(.subheadline)
+//            }
         }
         .frame(maxWidth: .infinity)
     }
