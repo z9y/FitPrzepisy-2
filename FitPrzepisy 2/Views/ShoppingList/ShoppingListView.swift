@@ -28,21 +28,6 @@ struct ShoppingListView: View {
                         RowView(item: item)
                     }
                 }
-                
-                Button("Add") {
-                    let name = ["pomarancza", "gruszka", "czekolada", "banan"]
-                    let last = ["70 gram", "50 gram", "30 ml", "100 gram"]
-                    
-                    let chosenName = name.randomElement()!
-                    let chosenLast = last.randomElement()!
-                    
-                    let item = Item(context: moc)
-                    item.id = UUID()
-                    item.name = "\(chosenName) \(chosenLast)"
-                    item.isBought = false
-                    
-                    try? moc.save()
-                }
             }
             .navigationTitle("Lista zakupów")
             .toolbar {

@@ -117,10 +117,7 @@ struct RecipeDetail: View {
                             .indicators([
                                 StepperIndicationType.custom(NumberedCircleView(text: "1"))
                             ])
-                            .stepIndicatorMode(StepperMode.vertical)
-                        //                            .spacing(30)
-                        //                            .lineOptions(StepperLineOptions.rounded(4, 8, Color.black))
-                        
+                            .stepIndicatorMode(StepperMode.vertical) 
                     }
                     Divider()
                     Text("Wartości odżywcze na porcje")
@@ -135,7 +132,6 @@ struct RecipeDetail: View {
                 .padding(.vertical)
                 .background(Color.primary.opacity(0.1))
                 .dynamicTypeSize(...DynamicTypeSize.xxxLarge)
-                
             }
         }
         .alert("Dodać do listy zakupów?", isPresented: $addToList) {
@@ -144,30 +140,13 @@ struct RecipeDetail: View {
             }
             Button("Anuluj", role: .cancel) {}
         }
-        //            .toolbar {
-        //                ToolbarItemGroup(placement: .navigationBarTrailing) {
-        //                    Button {
-        //                        addToList = true
-        //                    } label: {
-        //                        Image(systemName: "cart.badge.plus")
-        //                            .foregroundColor(.primary)
-        //                    }
-        //                    Button {
-        ////                        addItem()
-        //                    } label: {
-        //                        Image(systemName: "heart.fill")
-        //                            .foregroundColor(.primary)
-        //                    }
-        //                }
-        //            }
         .edgesIgnoringSafeArea(.top)
         .navigationViewStyle(.stack)
     }
     
     func addItem() {
         _ = recipe.ingredients.map { ingredient in
-            //            print("\(ingredient.ingredient)" + " " + "\(ingredient.amount)" + " " + "\(ingredient.unit)")
-            
+
             var amount: String {
                 switch ingredient.amount {
                 case 0:
@@ -178,7 +157,6 @@ struct RecipeDetail: View {
                     return String(format: "%.2f", ingredient.amount)
                 }
             }
-            
             
             let newItem = Item(context: moc)
             newItem.id = UUID()
