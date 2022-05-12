@@ -8,7 +8,10 @@
 import SwiftUI
 
 struct ContentView: View {
-    @EnvironmentObject var modelData: ModelData
+//    @EnvironmentObject var modelData: ModelData
+    @StateObject var modelData = ModelData()
+    @StateObject var favorites = Favorites()
+    @StateObject var dataController = DataController()
     
     var body: some View {
         VStack {
@@ -34,6 +37,9 @@ struct ContentView: View {
                     }
             }
         }
+        .environmentObject(modelData)
+        .environmentObject(favorites)
+        .environmentObject(dataController)
     }
 }
 
