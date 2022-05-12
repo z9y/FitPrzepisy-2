@@ -13,7 +13,7 @@ struct RecipeDetail: View {
     @StateObject private var viewModel: ViewModel
     @EnvironmentObject var dataController: DataController
     @EnvironmentObject var favorites: Favorites
-        
+    
     var body: some View {
         ScrollView {
             Image(decorative: viewModel.recipe.id)
@@ -45,7 +45,6 @@ struct RecipeDetail: View {
                     
                     HStack {
                         Button {
-//                            viewModel.changeFavorite()
                             if favorites.contains(viewModel.recipe) {
                                 favorites.remove(viewModel.recipe)
                             } else {
@@ -112,18 +111,15 @@ struct RecipeDetail: View {
                     
                     Text("Przygotowanie")
                         .font(.headline)
+
+                    StepperView()
+                        .addSteps(viewModel.steps)
+                        .indicators(viewModel.indicationTypes)
+                        .stepIndicatorMode(StepperMode.vertical)
+                        .lineOptions(StepperLineOptions.custom(0, Colors.blue(.teal).rawValue))
+                        .spacing(30)
+                        
                     
-                    ForEach(viewModel.recipe.preparation, id: \.self) { step in
-                        //                        Text("• \(step)")
-                        StepperView()
-                            .addSteps([
-                                Text("\(step)").font(.caption)
-                            ])
-                            .indicators([
-                                StepperIndicationType.custom(NumberedCircleView(text: "1"))
-                            ])
-                            .stepIndicatorMode(StepperMode.vertical) 
-                    }
                     Divider()
                     Text("Wartości odżywcze na porcje")
                         .font(.headline)

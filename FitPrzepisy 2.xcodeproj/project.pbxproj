@@ -19,6 +19,7 @@
 		79713E7827DF005E002A5A94 /* FavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79713E7727DF005E002A5A94 /* FavoritesView.swift */; };
 		79B5929F282D00180062CA5D /* ShoppingListView-ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79B5929E282D00180062CA5D /* ShoppingListView-ViewModel.swift */; };
 		79B592A3282D24660062CA5D /* AlertToast in Frameworks */ = {isa = PBXBuildFile; productRef = 79B592A2282D24660062CA5D /* AlertToast */; };
+		79B592A7282D53340062CA5D /* PreparationStepperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79B592A6282D53340062CA5D /* PreparationStepperView.swift */; };
 		79B64B6227AC65A2000C309F /* RecipeDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79B64B6127AC65A2000C309F /* RecipeDetail.swift */; };
 		79B80F6E27ACE23C0025936D /* FitPrzepisy-2-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 79B80F6D27ACE23C0025936D /* FitPrzepisy-2-Info.plist */; };
 		79B80F7027ACE2770025936D /* FitPrzepisy_2App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79B80F6F27ACE2770025936D /* FitPrzepisy_2App.swift */; };
@@ -55,6 +56,7 @@
 		79713E7527DF0008002A5A94 /* ShoppingListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListView.swift; sourceTree = "<group>"; };
 		79713E7727DF005E002A5A94 /* FavoritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesView.swift; sourceTree = "<group>"; };
 		79B5929E282D00180062CA5D /* ShoppingListView-ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ShoppingListView-ViewModel.swift"; sourceTree = "<group>"; };
+		79B592A6282D53340062CA5D /* PreparationStepperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreparationStepperView.swift; sourceTree = "<group>"; };
 		79B64B6127AC65A2000C309F /* RecipeDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetail.swift; sourceTree = "<group>"; };
 		79B80F6D27ACE23C0025936D /* FitPrzepisy-2-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "FitPrzepisy-2-Info.plist"; sourceTree = "<group>"; };
 		79B80F6F27ACE2770025936D /* FitPrzepisy_2App.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FitPrzepisy_2App.swift; sourceTree = "<group>"; };
@@ -199,6 +201,7 @@
 				79BC87ED27AA41FC005E783F /* CategoryRow.swift */,
 				79C0F82B27A8EE9200D729D1 /* RecipeCard.swift */,
 				79F9C3A327E2F31100B0FA7E /* RecipeGridView.swift */,
+				79B592A6282D53340062CA5D /* PreparationStepperView.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -324,6 +327,7 @@
 				79713E7827DF005E002A5A94 /* FavoritesView.swift in Sources */,
 				79D0487B2815261600B9954F /* RecipeDetail-ViewModel.swift in Sources */,
 				79126C7927E05633000F87EB /* CategoryView.swift in Sources */,
+				79B592A7282D53340062CA5D /* PreparationStepperView.swift in Sources */,
 				7962E042281658B500796596 /* IngredientRowView-ViewModel.swift in Sources */,
 				79B9EDF527A5D0C9009B9899 /* PageControl.swift in Sources */,
 				79B9EDE427A5B53C009B9899 /* ModelData.swift in Sources */,
