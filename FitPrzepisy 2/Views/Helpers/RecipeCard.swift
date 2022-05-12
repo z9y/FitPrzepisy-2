@@ -9,7 +9,7 @@ import SwiftUI
 
 struct RecipeCard: View {
     @EnvironmentObject var modelData: ModelData
-    @State private var favImage = "heart"
+    @EnvironmentObject var favorites: Favorites
     
     var recipe: Recipe
     var width: CGFloat
@@ -17,7 +17,7 @@ struct RecipeCard: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            RecipeCardHelper(recipe: recipe, width: width, heigth: heigth)
+            RecipeCardHelper(favorites: favorites, recipe: recipe, width: width, heigth: heigth)
             
             Text(recipe.name)
                 .foregroundColor(.primary)

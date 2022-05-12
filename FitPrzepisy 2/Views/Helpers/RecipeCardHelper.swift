@@ -7,9 +7,8 @@
 
 import SwiftUI
 
-import SwiftUI
-
 struct RecipeCardHelper: View {
+    var favorites: Favorites
     var recipe: Recipe
     var width: CGFloat
     var heigth: CGFloat
@@ -20,13 +19,14 @@ struct RecipeCardHelper: View {
             .aspectRatio(contentMode: .fill)
             .frame(width: width, height: heigth)
             .overlay {
-                TextOverlayy(recipe: recipe)
+                TextOverlayy(favorites: favorites, recipe: recipe)
             }
             .cornerRadius(10)
     }
 }
 
 struct TextOverlayy: View {
+    @StateObject var favorites: Favorites
     var recipe: Recipe
     
     var gradient: LinearGradient {
@@ -42,9 +42,14 @@ struct TextOverlayy: View {
             gradient
             HStack {
                 Button {
-                    print("klik favorite")
+                    //MOŻNA PRZERZUCIC ? 
+                    if favorites.contains(recipe) {
+                        favorites.remove(recipe)
+                    } else {
+                        favorites.add(recipe)
+                    }
                 } label: {
-                    Image(systemName: "heart")
+                    Image(systemName: favorites.contains(recipe) ? "heart.fill" : "heart")
                         .font(.system(size: 20))
                 }
                 

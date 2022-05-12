@@ -5,26 +5,21 @@
 //  Created by Pawel Slusarz on 14/03/2022.
 //
 
+import AlertToast
 import CoreData
 import SwiftUI
 
 struct ShoppingListView: View {
-    @Environment(\.managedObjectContext) var moc
-    @FetchRequest(sortDescriptors: [
-        SortDescriptor(\.isBought),
-        SortDescriptor(\.name)
-    ]) var items: FetchedResults<Item>
-    
-    @EnvironmentObject var modelData: ModelData
+    @EnvironmentObject var viewModel: DataController
     @State private var showingDelete = false
     
     var body: some View {
         NavigationView {
             VStack {
-                if items.isEmpty {
+                if viewModel.items.isEmpty {
                     NoItemView()
                 } else {
-                    List(items) { item in
+                    List(viewModel.items) { item in
                         RowView(item: item)
                     }
                 }
@@ -37,12 +32,14 @@ struct ShoppingListView: View {
                     } label: {
                         Image(systemName: "trash")
                     }
-                    .disabled(items.isEmpty)
+                    .disabled(viewModel.items.isEmpty)
+                    .foregroundColor(viewModel.items.isEmpty ? nil : .primary)
                 }
             }
             .alert("Usunąć wszystko z listy zakupów?", isPresented: $showingDelete) {
                 Button {
-                    deleteItem()
+                    viewModel.deleteItem()
+                    viewModel.showDeleteToast.toggle()
                 } label: {
                     Text("Tak")
                 }
@@ -50,27 +47,19 @@ struct ShoppingListView: View {
                 Button("Nie", role: .cancel, action: {})
             }
         }
-        .navigationViewStyle(.stack)
-    }
-    
-    func deleteItem() {
-        for item in items {
-            moc.delete(item)
+        .toast(isPresenting: $viewModel.showDeleteToast) {
+            AlertToast(type: .error(.red), title: "Usunięto")
         }
-        
-        try? moc.save()
-    }
-    
-    func changeBool(item: Item) {
-        item.isBought = !item.isBought
-        
-        try? moc.save()
+        .navigationViewStyle(.stack)
+        .environmentObject(viewModel)
     }
 }
 
 struct ShoppingListView_Previews: PreviewProvider {
+    static var viewModel = DataController()
+    
     static var previews: some View {
         ShoppingListView()
-            .environmentObject(ModelData())
+            .environmentObject(viewModel)
     }
 }

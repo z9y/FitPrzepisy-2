@@ -40,7 +40,7 @@ struct HomeView_Previews: PreviewProvider {
     static let modelData = ModelData()
     
     static var previews: some View {
-        RecipeDetail(recipe: Recipe.example)
+        RecipeDetailView(recipe: Recipe.example)
             .environmentObject(modelData)
     }
 }

@@ -13,7 +13,7 @@ struct RecipeGridView: View {
         GridItem(.adaptive(minimum: 150), spacing: 10)
     ]
     
-    //do wyrzucenia
+    //DO HELPERS ?
     var recipesCountName: String {
         if recipes.count == 1 {
             return "przepis"

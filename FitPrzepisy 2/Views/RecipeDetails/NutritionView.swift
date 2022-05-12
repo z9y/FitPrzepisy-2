@@ -15,40 +15,41 @@ struct NutritionView: View {
             VStack {
                 Text("Energia")
                     .font(.caption.bold())
-                Text("\(toString(cos: recipe.macro.kcal)) kcal")
+                Text("\(toString(recipe.macro.kcal)) kcal")
                     .font(.subheadline)
             }
             
             VStack {
                 Text("Węglowodany")
                     .font(.caption.bold())
-                Text("\(toString(cos: recipe.macro.carbohydrates)) gram")
+                Text("\(toString(recipe.macro.carbohydrates)) gram")
                     .font(.subheadline)
             }
             
             VStack {
                 Text("Białko")
                     .font(.caption.bold())
-                Text("\(toString(cos: recipe.macro.protein)) gram")
+                Text("\(toString(recipe.macro.protein)) gram")
                     .font(.subheadline)
             }
             
             VStack {
                 Text("Tłuszcz")
                     .font(.caption.bold())
-                Text("\(toString(cos: recipe.macro.fat)) gram")
+                Text("\(toString(recipe.macro.fat)) gram")
                     .font(.subheadline)
             }
         }
         .frame(maxWidth: .infinity)
     }
     
-    func toString(cos: Double) -> String {
-        switch cos {
-        case floor(cos):
-            return "\(Int(cos))"
+    //PRZENIESC DO HELPERS
+    func toString(_ numToString: Double) -> String {
+        switch numToString {
+        case floor(numToString):
+            return "\(Int(numToString))"
         default:
-            return String(format: "%.1f", cos)
+            return String(format: "%.1f", numToString)
         }
     }
 }

@@ -20,7 +20,7 @@ struct CategoryRow: View {
                 
                 Spacer()
                 
-                //MORE BUTTON
+                //MORE BUTTON ??
             }
             
             ScrollView(.horizontal, showsIndicators: false) {

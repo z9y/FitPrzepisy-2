@@ -8,6 +8,8 @@
 import Foundation
 import SwiftUI
 
+
+//MOZNA SKASOWAC 
 extension VerticalAlignment {
     enum MidRecipeDetails: AlignmentID {
         static func defaultValue(in context: ViewDimensions) -> CGFloat {

@@ -9,18 +9,19 @@ import SwiftUI
 
 struct RowView: View {
     @EnvironmentObject var modelData: ModelData
+    @StateObject var viewModel = DataController()
     
-    let cos = ShoppingListView()
-    
+    let shoppingList = ShoppingListView()
     let item: Item
     
     var body: some View {
         HStack {
             Button{
-                cos.changeBool(item: item)
+                viewModel.changeBool(item: item)
             } label: {
                 Image(systemName: item.isBought ? "checkmark.circle" : "circle")
             }
+            .foregroundColor(.primary)
             
             Text(item.name ?? "Unknown")
                 .font(.callout)
@@ -32,5 +33,4 @@ struct RowView: View {
         .padding()
         .cornerRadius(15)
     }
-
 }

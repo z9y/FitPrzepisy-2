@@ -46,13 +46,6 @@ struct RecipeDetailView: View {
                 Text("\(recipe.details.totalTime) min")
                     .font(.subheadline)
             }
-            
-//            VStack {
-//                Text("Porcje")
-//                    .font(.caption.bold())
-//                Text("\(recipe.details.servings)")
-//                    .font(.subheadline)
-//            }
         }
         .frame(maxWidth: .infinity)
     }

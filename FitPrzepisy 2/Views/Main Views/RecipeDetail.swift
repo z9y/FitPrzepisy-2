@@ -5,31 +5,30 @@
 //  Created by Pawel Slusarz on 03/02/2022.
 //
 
+import AlertToast
 import StepperView
 import SwiftUI
 
 struct RecipeDetail: View {
-    @EnvironmentObject var modelData: ModelData
-    @Environment(\.managedObjectContext) var moc
-    @State private var addToList = false
-    @State private var portions = 2
-    
-    var recipe: Recipe
-    
+    @StateObject private var viewModel: ViewModel
+    @EnvironmentObject var dataController: DataController
+    @EnvironmentObject var favorites: Favorites
+        
     var body: some View {
         ScrollView {
-            Image(decorative: recipe.id)
+            Image(decorative: viewModel.recipe.id)
                 .resizable()
                 .aspectRatio(contentMode: .fill)
                 .clipped()
             
             VStack(spacing: 30) {
-                Text(recipe.name)
+                Text(viewModel.recipe.name)
                     .font(.largeTitle.bold())
                     .multilineTextAlignment(.center)
                 
                 VStack {
                     VStack {
+                        //TODO OCENA
                         HStack {
                             Image(systemName: "star.fill")
                             Image(systemName: "star.fill")
@@ -46,15 +45,21 @@ struct RecipeDetail: View {
                     
                     HStack {
                         Button {
+//                            viewModel.changeFavorite()
+                            if favorites.contains(viewModel.recipe) {
+                                favorites.remove(viewModel.recipe)
+                            } else {
+                                favorites.add(viewModel.recipe)
+                            }
                             
                         } label: {
-                            Image(systemName: "heart")
+                            Image(systemName: favorites.contains(viewModel.recipe) ? "heart.fill" : "heart")
                             Text("542")
                         }
                         .padding(.trailing)
                         
                         Button {
-                            addToList = true
+                            viewModel.addToList = true
                         } label: {
                             Image(systemName: "cart.badge.plus")
                                 .foregroundColor(.primary)
@@ -75,7 +80,7 @@ struct RecipeDetail: View {
                 }
                 
                 HStack(spacing: 10) {
-                    RecipeDetailView(recipe: recipe)
+                    RecipeDetailView(recipe: viewModel.recipe)
                 }
                 .padding(.vertical)
                 .background(Color.primary.opacity(0.1))
@@ -89,18 +94,18 @@ struct RecipeDetail: View {
                     
                     HStack {
                         Stepper {
-                            Text("Porcje: \(portions)")
+                            Text("Porcje: \(viewModel.portions)")
                         } onIncrement: {
                             print("zwiekszone o 1")
-                            portions += 1
+                            viewModel.portions += 1
                         } onDecrement: {
                             print("zmniejszone o 1")
-                            portions -= 1
+                            viewModel.portions -= 1
                         }
                     }
                     
-                    ForEach(recipe.ingredients, id: \.self) { ingredient in
-                        IngredioentRowView(ingredients: ingredient)
+                    ForEach(viewModel.recipe.ingredients, id: \.self) { ingredient in
+                        IngredientRowView(ingredient: ingredient)
                     }
                     
                     Divider()
@@ -108,7 +113,7 @@ struct RecipeDetail: View {
                     Text("Przygotowanie")
                         .font(.headline)
                     
-                    ForEach(recipe.preparation, id: \.self) { step in
+                    ForEach(viewModel.recipe.preparation, id: \.self) { step in
                         //                        Text("• \(step)")
                         StepperView()
                             .addSteps([
@@ -127,52 +132,35 @@ struct RecipeDetail: View {
                 .padding(.bottom)
                 
                 HStack(spacing: 10) {
-                    NutritionView(recipe: recipe)
+                    NutritionView(recipe: viewModel.recipe)
                 }
                 .padding(.vertical)
                 .background(Color.primary.opacity(0.1))
                 .dynamicTypeSize(...DynamicTypeSize.xxxLarge)
             }
         }
-        .alert("Dodać do listy zakupów?", isPresented: $addToList) {
+        .alert("Dodać do listy zakupów?", isPresented: $viewModel.addToList) {
             Button("Dodaj") {
-                addItem()
+                dataController.addItem(recipe: viewModel.recipe)
+                dataController.showAddedToast.toggle()
             }
             Button("Anuluj", role: .cancel) {}
         }
+        .toast(isPresenting: $dataController.showAddedToast) {
+            AlertToast(type: .complete(.green), title: "Dodano do listy zakupów")
+        }
         .edgesIgnoringSafeArea(.top)
         .navigationViewStyle(.stack)
+        .environmentObject(dataController)
     }
     
-    func addItem() {
-        _ = recipe.ingredients.map { ingredient in
-
-            var amount: String {
-                switch ingredient.amount {
-                case 0:
-                    return "-"
-                case floor(ingredient.amount):
-                    return "\(Int(ingredient.amount))"
-                default:
-                    return String(format: "%.2f", ingredient.amount)
-                }
-            }
-            
-            let newItem = Item(context: moc)
-            newItem.id = UUID()
-            newItem.isBought = false
-            newItem.name = "\(ingredient.ingredient)" + " " + "\(amount)" + " " + "\(ingredient.unit)"
-            
-            try? moc.save()
-        }
+    init(recipe: Recipe) {
+        _viewModel = StateObject(wrappedValue: ViewModel(recipe: recipe))
     }
 }
 
 struct RecipeDetail_Previews: PreviewProvider {
-    static let modelData = ModelData()
-    
     static var previews: some View {
         RecipeDetail(recipe: Recipe.example)
-            .environmentObject(modelData)
     }
 }

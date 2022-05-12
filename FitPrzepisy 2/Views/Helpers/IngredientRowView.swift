@@ -7,36 +7,28 @@
 
 import SwiftUI
 
-struct IngredioentRowView: View {
+struct IngredientRowView: View {
     @EnvironmentObject var modelData: ModelData
-    
-    var ingredients: Recipe.Ingredient
-    
-    var amount: String {
-        switch ingredients.amount {
-        case 0:
-            return "-"
-        case floor(ingredients.amount):
-            return "\(Int(ingredients.amount))"
-        default:
-            return String(format: "%.2f", ingredients.amount)
-        }
-    }
+    @StateObject private var viewModel: ViewModel
     
     var body: some View {
         HStack {
-            Text("• \(ingredients.ingredient)")
+            Text("• \(viewModel.ingredients.ingredient)")
                 .font(.system(size: 15))
             
             Spacer()
             
             VStack(alignment: .trailing, spacing: 5) {
-                Text(amount)
+                Text(viewModel.amount)
                     
-                Text(ingredients.unit)
+                Text(viewModel.ingredients.unit)
             }
             .font(.system(size: 15))
         }
+    }
+    
+    init(ingredient: Recipe.Ingredient) {
+        _viewModel = StateObject(wrappedValue: ViewModel(ingredients: ingredient))
     }
 }
 
@@ -44,7 +36,7 @@ struct IngredioentRowView_Previews: PreviewProvider {
     static let modelData = ModelData()
     
     static var previews: some View {
-        IngredioentRowView(ingredients: Recipe.example.ingredients[0])
+        IngredientRowView(ingredient: Recipe.example.ingredients[0])
             .environmentObject(modelData)
     }
 }
