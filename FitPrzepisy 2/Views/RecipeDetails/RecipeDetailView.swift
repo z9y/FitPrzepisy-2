@@ -10,6 +10,7 @@ import SwiftUI
 struct RecipeDetailView: View {
     let recipe: Recipe
     
+    //PRZENIESC DO HELPERS
     var level: String {
         switch recipe.details.level {
         case 1:

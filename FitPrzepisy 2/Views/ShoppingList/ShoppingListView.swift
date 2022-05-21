@@ -24,6 +24,7 @@ struct ShoppingListView: View {
                     }
                 }
             }
+            .padding(.bottom, 25)
             .navigationTitle("Lista zakupów")
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {

@@ -18,16 +18,14 @@ struct RecipeCard: View {
     var body: some View {
         VStack(alignment: .leading) {
             RecipeCardHelper(favorites: favorites, recipe: recipe, width: width, heigth: heigth)
-            
+                
             Text(recipe.name)
                 .foregroundColor(.primary)
-                .font(.headline)
+                .font(.title3.weight(.semibold))
                 .frame(width: width, height: 80)
                 .multilineTextAlignment(.leading)
-                .lineLimit(nil)
         }
         .clipShape(RoundedRectangle(cornerRadius: 10))
-        .shadow(color: Color.black.opacity(0.3), radius: 3, y: 3)
     }
 }
 

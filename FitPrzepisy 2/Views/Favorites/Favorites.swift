@@ -43,4 +43,6 @@ class Favorites: ObservableObject {
             UserDefaults.standard.set(data, forKey: saveKey)
         }
     }
+    
+    static let example = Favorites()
 }

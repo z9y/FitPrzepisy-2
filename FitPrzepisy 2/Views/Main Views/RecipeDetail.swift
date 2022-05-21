@@ -55,6 +55,7 @@ struct RecipeDetail: View {
                             Image(systemName: favorites.contains(viewModel.recipe) ? "heart.fill" : "heart")
                             Text("542")
                         }
+                        .foregroundColor(favorites.contains(viewModel.recipe) ? .green : .primary)
                         .padding(.trailing)
                         
                         Button {
@@ -116,7 +117,7 @@ struct RecipeDetail: View {
                         .addSteps(viewModel.steps)
                         .indicators(viewModel.indicationTypes)
                         .stepIndicatorMode(StepperMode.vertical)
-                        .lineOptions(StepperLineOptions.custom(0, Colors.blue(.teal).rawValue))
+                        .lineOptions(StepperLineOptions.custom(0, .green))
                         .spacing(30)
                         
                     
@@ -125,7 +126,6 @@ struct RecipeDetail: View {
                         .font(.headline)
                 }
                 .padding(.horizontal)
-                .padding(.bottom)
                 
                 HStack(spacing: 10) {
                     NutritionView(recipe: viewModel.recipe)
@@ -135,6 +135,7 @@ struct RecipeDetail: View {
                 .dynamicTypeSize(...DynamicTypeSize.xxxLarge)
             }
         }
+        .padding(.bottom, 60)
         .alert("Dodać do listy zakupów?", isPresented: $viewModel.addToList) {
             Button("Dodaj") {
                 dataController.addItem(recipe: viewModel.recipe)

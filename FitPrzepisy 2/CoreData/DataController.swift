@@ -57,7 +57,7 @@ class DataController: ObservableObject {
     
     func changeBool(item: Item) {
         item.isBought = !item.isBought
-        print("\(item.isBought)")
+
         saveData()
     }
     

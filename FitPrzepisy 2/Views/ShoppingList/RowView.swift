@@ -9,24 +9,26 @@ import SwiftUI
 
 struct RowView: View {
     @EnvironmentObject var modelData: ModelData
-    @StateObject var viewModel = DataController()
+    @EnvironmentObject var viewModel: DataController
     
     let shoppingList = ShoppingListView()
     let item: Item
     
     var body: some View {
         HStack {
-            Button{
-                viewModel.changeBool(item: item)
+            Button {
+                withAnimation(.default.delay(0.3)) {
+                    viewModel.changeBool(item: item)
+                }
             } label: {
                 Image(systemName: item.isBought ? "checkmark.circle" : "circle")
             }
-            .foregroundColor(.primary)
+            .foregroundColor(item.isBought ? .secondary : .primary)
             
             Text(item.name ?? "Unknown")
                 .font(.callout)
-                .strikethrough(item.isBought ? true : false)
-                .lineLimit(nil)
+                .foregroundColor(item.isBought ? .secondary : .primary)
+                .fixedSize(horizontal: false, vertical: true)
             
             Spacer()
         }

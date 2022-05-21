@@ -12,9 +12,10 @@ import SwiftUI
 
 @MainActor class ModelData: ObservableObject {
     @Published private(set) var recipes = [Recipe]()
+    @Published var showDetail: Bool = false
     
     private var cancellable: Cancellable?
-
+    
     init() {
         Task {
             await loadData()
@@ -34,23 +35,8 @@ import SwiftUI
         recipes.filter { $0.isFeatured }
     }
     
-//    func loadRecipes() {
-//        cancellable?.cancel()
-//
-//        guard let url = URL(string: "https://z999y.free.beeceptor.com/fitprzepisy") else {
-//            print("Invalid URL")
-//            return
-//        }
-//
-//        cancellable = URLSession.shared.dataTaskPublisher(for: url)
-//            .map { $0.data }
-//            .decode(type: [Recipe].self, decoder: JSONDecoder())
-//            .receive(on: RunLoop.main)
-//            .eraseToAnyPublisher() as! Cancellable
-//    }
-    
     func loadData() async {
-        guard let url = URL(string: "https://testtest312123.free.beeceptor.com/fitprzepisy") else {
+        guard let url = URL(string: "https://zarowka2137.free.beeceptor.com/fitprzepisy") else {
             print("Invalid URL")
             return
         }

@@ -8,38 +8,39 @@
 import SwiftUI
 
 struct ContentView: View {
-//    @EnvironmentObject var modelData: ModelData
+    @AppStorage("selectedTab") var selectedTab: Tab = .home
     @StateObject var modelData = ModelData()
     @StateObject var favorites = Favorites()
     @StateObject var dataController = DataController()
     
     var body: some View {
-        VStack {
-            TabView {
-                HomeView()
-                    .tabItem {
-                        Label("Nowość", systemImage: "safari")
-                    }
+        if modelData.features.isEmpty {
+            ProgressView()
+                .frame(height: 300)
+        } else {
+            ZStack(alignment: .bottom) {
 
-                CategoryView()
-                    .tabItem {
-                        Label("Kategorie", systemImage: "square.fill.text.grid.1x2")
-                    }
+                switch selectedTab {
+                case .home:
+                    HomeView()
+                case .category:
+                    CategoryView()
+                case .favorites:
+                    FavoritesView()
+                case .shoppingList:
+                    ShoppingListView()
+                }
 
-                FavoritesView()
-                    .tabItem {
-                        Label("Ulubione", systemImage: "heart")
-                    }
-
-                ShoppingListView()
-                    .tabItem {
-                        Label("Lista zakupów", systemImage: "checklist")
-                    }
+                TabBar()
+                    .offset(y: modelData.showDetail ? 200 : 0)
             }
+            .safeAreaInset(edge: .bottom) {
+                Color.clear.frame(height: 44)
+            }
+            .environmentObject(modelData)
+            .environmentObject(favorites)
+            .environmentObject(dataController)
         }
-        .environmentObject(modelData)
-        .environmentObject(favorites)
-        .environmentObject(dataController)
     }
 }
 

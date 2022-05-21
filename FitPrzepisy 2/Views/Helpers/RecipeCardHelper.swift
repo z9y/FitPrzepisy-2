@@ -51,6 +51,7 @@ struct TextOverlayy: View {
                 } label: {
                     Image(systemName: favorites.contains(recipe) ? "heart.fill" : "heart")
                         .font(.system(size: 20))
+                        .foregroundColor(favorites.contains(recipe) ? .green : .white)
                 }
                 
                 Spacer()
@@ -60,7 +61,8 @@ struct TextOverlayy: View {
             }
             .font(.headline.bold())
             .foregroundColor(.white)
-            .shadow(color: .black, radius: 3)
+//            .shadow(color: .black, radius: 3)
+            .shadow(color: Color("Shadow").opacity(0.3), radius: 5, x: 3, y: 5)
             .padding(8)
         }
         .foregroundColor(.white)
