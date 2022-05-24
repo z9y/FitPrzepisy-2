@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct AccountView: View {
+    @Environment(\.dismiss) var dismiss
+    
     var body: some View {
         NavigationView {
             List {
@@ -17,6 +19,11 @@ struct AccountView: View {
             }
             .listStyle(.insetGrouped)
             .navigationTitle("Konto")
+            .navigationBarItems(trailing: Button {
+                dismiss()
+            } label: {
+                Text("Anuluj")
+            })
         }
     }
     

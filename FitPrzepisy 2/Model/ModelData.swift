@@ -36,7 +36,7 @@ import SwiftUI
     }
     
     func loadData() async {
-        guard let url = URL(string: "https://zarowka2137.free.beeceptor.com/fitprzepisy") else {
+        guard let url = URL(string: "https://z999y.free.beeceptor.com/fitprzepisy") else {
             print("Invalid URL")
             return
         }

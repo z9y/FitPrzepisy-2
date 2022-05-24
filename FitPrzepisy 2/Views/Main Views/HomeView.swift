@@ -15,6 +15,7 @@ struct HomeView: View {
     @State var show = false
     @State var showStatusBar = true
     @State var selectedID = String()
+    @State var showFeaturedRecipe = false
     
     var body: some View {
         ZStack {
@@ -71,11 +72,12 @@ struct HomeView: View {
                 }
             }
         }
+
     }
     
     var featuredItems: some View {
         TabView {
-            ForEach(modelData.features) { recipe in
+            ForEach(Array(modelData.features.enumerated()), id: \.offset) { index, recipe in
                 GeometryReader { proxy in
                     let minX = proxy.frame(in: .global).minX
                     
@@ -93,6 +95,13 @@ struct HomeView: View {
                                 .offset(x: 45, y: -90)
                                 .offset(x: minX / 3)
                         )
+                        .onTapGesture {
+                            showFeaturedRecipe = true
+                        }
+                    
+                        .sheet(isPresented: $showFeaturedRecipe) {
+                            RecipeView(recipe: modelData.features[index], show: $showFeaturedRecipe, namespace: namespace)
+                        }
                 }
             }
         }
